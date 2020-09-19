@@ -1,0 +1,7 @@
+{
+    "parent": "janoeo_world:block/berry_leaves",
+    "textures": {
+        "all": "minecraft:block/oak_leaves",
+        "berry": "janoeo_world:block/oak_leaves_apple"
+    }
+}

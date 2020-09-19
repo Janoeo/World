@@ -1,0 +1,28 @@
+modLoader="javafml"
+loaderVersion="[31,)"
+[[mods]]
+modId="janoeo_world"
+version="${file.jarVersion}"
+displayName="Just Another Nether/Overworld/End Ores - World"
+authors="AlasDiablo, lIotaMiu, Egame257 and Safyrus"
+description='''
+Just Another Nether/Overworld/End Ores - World by AlasDiablo, lIotaMiu, Egame257 and Safyrus
+'''
+[[dependencies.janoeo_world]]
+    modId="forge"
+    mandatory=true
+    versionRange="[31,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.janoeo_world]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.15.2]"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.janoeo_world]]
+    modId="janoeo"
+    mandatory=true
+    versionRange="[4.4,)"
+    ordering="AFTER"
+    side="BOTH"
