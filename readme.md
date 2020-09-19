@@ -1,6 +1,6 @@
-# Janoeo
+# Janoeo World
 
-<img src="https://raw.githubusercontent.com/AlasDiablo/JANOEO/1.15/textures/desc/logo.png" alt="AkumaCodeBlack" align=right width=128px />
+<img src="https://raw.githubusercontent.com/AlasDiablo/JANOEO-World/master/logo.png" align=right width=128px />
 
 [![Downloads](http://cf.way2muchnoise.eu/full_janoeo-world_downloads.svg)](https://www.curseforge.com/minecraft/mc-mods/janoeo-world)
 [![Versions](http://cf.way2muchnoise.eu/versions/janoeo-world.svg)](https://www.curseforge.com/minecraft/mc-mods/janoeo/files)
@@ -23,13 +23,8 @@ I just wanted to make a useful mod for other people.
 
 ## Dependencies
 
-#### Recommended
-+ [JANOEO Arsenal](https://www.curseforge.com/minecraft/mc-mods/janoeo-arsenal)
-#### Optionals / Compatibles
-+ [Iron Chests](https://www.curseforge.com/minecraft/mc-mods/iron-chests)
-+ [Iron Furnaces](https://www.curseforge.com/minecraft/mc-mods/iron-furnaces)
-+ [Silent's Mechanisms](https://www.curseforge.com/minecraft/mc-mods/silents-mechanisms)
-+ [Mekanism](https://www.curseforge.com/minecraft/mc-mods/mekanism)
+#### Required
++ [JANOEO](https://www.curseforge.com/minecraft/mc-mods/janoeo)
 
 ## Can I use this in a modpack?
 
