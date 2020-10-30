@@ -13,10 +13,10 @@ public class ClientProxy extends CommonProxy {
 
     @Override
     public void init() {
-        BlockColors blockColors = Minecraft.getInstance().getBlockColors();
-        ItemColors itemColors = Minecraft.getInstance().getItemColors();
+        final BlockColors BLOCK_COLORS = Minecraft.getInstance().getBlockColors();
+        final ItemColors ITEM_COLORS = Minecraft.getInstance().getItemColors();
 
-        blockColors.register(
+        BLOCK_COLORS.register(
                 (state, world, pos, tintIndex) -> {
                     if (world != null && pos != null)
                         return BiomeColors.getFoliageColor(world, pos);
@@ -26,10 +26,10 @@ public class ClientProxy extends CommonProxy {
                 LeavesBlocks.OAK_LEAVES_APPLE
         );
 
-        itemColors.register(
+        ITEM_COLORS.register(
                 (stack, tintIndex) -> {
                     BlockState blockState = ((BlockItem) stack.getItem()).getBlock().getDefaultState();
-                    return blockColors.getColor(blockState, null, null, tintIndex);
+                    return BLOCK_COLORS.getColor(blockState, null, null, tintIndex);
                 },
                 LeavesBlocks.OAK_LEAVES_APPLE
         );

@@ -15,14 +15,14 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 apply plugin: "com.wynprice.cursemaven"
 
-version = '4.0.0.51-experimental'
+version = '4.0.0.60-experimental'
 group = 'fr.alasdiablo.janoeo.worlds'
 archivesBaseName = 'Janoeo-World'
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
 minecraft {
-    mappings channel: 'snapshot', version: '20200919-1.15.1'
+    mappings channel: 'snapshot', version: '20200916-1.16.2'
 
     runs {
         client {
@@ -72,8 +72,8 @@ minecraft {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.15.2-31.2.41'
-    compile fg.deobf('curse.maven:jenoeo:3059863')
+    minecraft 'net.minecraftforge:forge:1.16.3-34.1.0'
+    compile fg.deobf('curse.maven:jenoeo:3095130')
 }
 
 jar {

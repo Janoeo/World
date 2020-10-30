@@ -13,7 +13,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 @Mod(Registries.MOD_ID)
 public class World {
 
-    public static CommonProxy proxy = DistExecutor.safeRunForDist(() -> ClientProxy::new, () -> CommonProxy::new);
+    public static final CommonProxy PROXY = DistExecutor.safeRunForDist(() -> ClientProxy::new, () -> CommonProxy::new);
 
     public static ModSetup setup = new ModSetup();
 
@@ -27,6 +27,6 @@ public class World {
     }
 
     private void complete(final FMLLoadCompleteEvent event) {
-        proxy.init();
+        PROXY.init();
     }
 }
