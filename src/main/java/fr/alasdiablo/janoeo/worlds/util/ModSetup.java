@@ -1,13 +1,10 @@
 package fr.alasdiablo.janoeo.worlds.util;
 
-import fr.alasdiablo.janoeo.world.gen.IWorldGenerator;
 import fr.alasdiablo.janoeo.worlds.block.LeavesBlocks;
 import fr.alasdiablo.janoeo.worlds.world.gen.LeavesGenerator;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-
-import java.util.ArrayList;
-import java.util.List;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class ModSetup {
 
@@ -19,8 +16,6 @@ public class ModSetup {
     };
 
     public void init() {
-        List<IWorldGenerator> generators = new ArrayList<>();
-        generators.add(new LeavesGenerator());
-        generators.forEach(IWorldGenerator::startWorldGeneration);
+        ForgeRegistries.BIOMES.forEach(biome -> new LeavesGenerator().startWorldGeneration(biome));
     }
 }

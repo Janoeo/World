@@ -4,6 +4,8 @@ import fr.alasdiablo.janoeo.worlds.util.ClientProxy;
 import fr.alasdiablo.janoeo.worlds.util.CommonProxy;
 import fr.alasdiablo.janoeo.worlds.util.ModSetup;
 import fr.alasdiablo.janoeo.worlds.util.Registries;
+import fr.alasdiablo.janoeo.worlds.world.gen.Features;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -20,6 +22,11 @@ public class World {
     public World() {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::complete);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::initFeatures);
+    }
+
+    private void initFeatures(RegistryEvent.NewRegistry e) {
+        Features.initFeatures();
     }
 
     private void setup(final FMLCommonSetupEvent event) {
