@@ -1,6 +1,6 @@
 package fr.alasdiablo.janoeo.worlds.block;
 
-import fr.alasdiablo.janoeo.util.Utils;
+import fr.alasdiablo.diolib.util.RegistryHelper;
 import fr.alasdiablo.janoeo.worlds.World;
 import fr.alasdiablo.janoeo.worlds.util.Registries;
 import net.minecraft.block.Block;
@@ -26,13 +26,13 @@ public class LeavesBlocks {
     public static class RegistryEvents {
         @SubscribeEvent
         public static void onBlocksRegistry(final RegistryEvent.Register<Block> event) {
-            Utils.registerBlock(event.getRegistry(), OAK_LEAVES_APPLE);
+            RegistryHelper.registerBlock(event.getRegistry(), OAK_LEAVES_APPLE);
         }
 
         @SubscribeEvent
         public static void onItemsRegistry(final RegistryEvent.Register<Item> event) {
             Item.Properties properties = new Item.Properties().group(World.setup.janoeoWorldGroup);
-            Utils.registerBlockItem(event.getRegistry(), properties, OAK_LEAVES_APPLE);
+            RegistryHelper.registerBlockItem(event.getRegistry(), properties, OAK_LEAVES_APPLE);
         }
     }
 }
