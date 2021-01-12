@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_rh",
+  "textures": {
+    "top": "janoeo_world:block/cherry_door_top",
+    "bottom": "janoeo_world:block/cherry_door_bottom"
+  }
+}
