@@ -10,4 +10,6 @@ public class Registries {
     public static final String CHERRY_PLANKS = "cherry_planks";
     public static final String CHERRY_DOOR = "cherry_door";
     public static final String CHERRY_SAPLING = "cherry_sapling";
+    public static final String CHERRY = "cherry";
+    public static final String STRIPPED_CHERRY_LOG = "stripped_cherry_log";
 }

@@ -2,9 +2,8 @@ package fr.alasdiablo.janoeo.worlds.block.trees;
 
 import fr.alasdiablo.janoeo.worlds.world.gen.Features;
 import net.minecraft.block.trees.Tree;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.registry.WorldGenRegistries;
-import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.feature.BaseTreeFeatureConfig;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
 
 import java.util.Random;
 

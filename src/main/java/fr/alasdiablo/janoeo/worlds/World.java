@@ -30,7 +30,9 @@ public class World {
     }
 
     private void setup(final FMLCommonSetupEvent event) {
-        setup.init();
+        setup.initFlammable();
+        setup.initStrippable();
+        setup.initWorldGen();
     }
 
     private void complete(final FMLLoadCompleteEvent event) {

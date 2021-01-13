@@ -1,5 +1,17 @@
 ### %WIP Version%
-+ Add Cherry tree
++ Add
+  + Cherry tree
+  + Cherry tree world gen into `FOREST`, `PLAINS` and `SWAMP` Biome type
+  + Cherry door
+  + Cherry log
+  + Cherry stripped log
+  + Cherry planks
+  + Cherry leaves
+  + Cherry
++ Fix
+  + Flammability of Oak apple leave
++ Update
+  + Diabolo lib from 1.0.3 to 1.0.5
 
 ### 4.1.0.63-experimental
 + Add compatibility with DiaboloLib

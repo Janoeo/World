@@ -3,6 +3,7 @@ package fr.alasdiablo.janoeo.worlds.data;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import fr.alasdiablo.janoeo.worlds.init.ModBlocks;
+import fr.alasdiablo.janoeo.worlds.init.ModItems;
 import net.minecraft.advancements.criterion.EnchantmentPredicate;
 import net.minecraft.advancements.criterion.ItemPredicate;
 import net.minecraft.advancements.criterion.MinMaxBounds;
@@ -14,6 +15,7 @@ import net.minecraft.item.Items;
 import net.minecraft.loot.*;
 import net.minecraft.loot.conditions.ILootCondition;
 import net.minecraft.loot.conditions.MatchTool;
+import net.minecraft.loot.conditions.TableBonus;
 import net.minecraft.util.ResourceLocation;
 
 import java.util.Map;
@@ -30,10 +32,8 @@ public class ModBlockLootTable extends BlockLootTables {
 
     @Override
     protected void addTables() {
-        this.registerLootTable(ModBlocks.OAK_LEAVES_APPLE,
-                (leaves) -> droppingWithChancesSticksAndApples(leaves, Blocks.OAK_SAPLING, DEFAULT_SAPLING_DROP_RATES).addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).acceptCondition(NOT_SILK_TOUCH_OR_SHEARS).addEntry(withSurvivesExplosion(leaves, ItemLootEntry.builder(Items.APPLE))))
-        );
-        this.registerLootTable(ModBlocks.CHERRY_LEAVES, (leaves) -> droppingWithChancesAndSticks(leaves, ModBlocks.CHERRY_SAPLING, DEFAULT_SAPLING_DROP_RATES));
+        this.registerLootTable(ModBlocks.OAK_LEAVES_APPLE, (leaves) -> droppingWithChancesSticksAndApples(leaves, Blocks.OAK_SAPLING, DEFAULT_SAPLING_DROP_RATES).addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).acceptCondition(NOT_SILK_TOUCH_OR_SHEARS).addEntry(withSurvivesExplosion(leaves, ItemLootEntry.builder(Items.APPLE)))));
+        this.registerLootTable(ModBlocks.CHERRY_LEAVES, (leaves) -> droppingWithChancesAndSticks(leaves, ModBlocks.CHERRY_SAPLING, DEFAULT_SAPLING_DROP_RATES).addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).acceptCondition(NOT_SILK_TOUCH_OR_SHEARS).addEntry(withSurvivesExplosion(leaves, ItemLootEntry.builder(ModItems.CHERRY)).acceptCondition(TableBonus.builder(Enchantments.FORTUNE, 0.005F, 0.0055555557F, 0.00625F, 0.008333334F, 0.025F)))));
         this.registerDropSelfLootTable(ModBlocks.CHERRY_LOG);
         this.registerDropSelfLootTable(ModBlocks.CHERRY_PLANKS);
         this.registerDropSelfLootTable(ModBlocks.CHERRY_SAPLING);
