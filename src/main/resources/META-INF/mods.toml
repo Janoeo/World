@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[34,)"
+loaderVersion="[35,)"
 license="LGPL-3.0"
 [[mods]]
 modId="janoeo_world"
@@ -12,13 +12,13 @@ Janoeo - World by AlasDiablo, lIotaMiu, Egame257 and Safyrus
 [[dependencies.janoeo_world]]
     modId="forge"
     mandatory=true
-    versionRange="[34,)"
+    versionRange="[35,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.janoeo_world]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.16.3]"
+    versionRange="[1.16.4]"
     ordering="NONE"
     side="BOTH"
 [[dependencies.janoeo_world]]
