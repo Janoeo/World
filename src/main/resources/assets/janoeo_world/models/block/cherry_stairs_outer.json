@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "janoeo_world:block/cherry_planks",
+    "top": "janoeo_world:block/cherry_planks",
+    "side": "janoeo_world:block/cherry_planks"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "janoeo_world:stripped_cherry_log"
+    }
+  ],
+  "result": {
+    "item": "janoeo_world:cherry_planks",
+    "count": 4
+  }
+}

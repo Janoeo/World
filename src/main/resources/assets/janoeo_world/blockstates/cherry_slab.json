@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "janoeo_world:block/cherry_slab"
+    },
+    "type=double": {
+      "model": "janoeo_world:block/cherry_planks"
+    },
+    "type=top": {
+      "model": "janoeo_world:block/cherry_slab_top"
+    }
+  }
+}

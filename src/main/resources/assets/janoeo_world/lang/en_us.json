@@ -1,4 +1,18 @@
 {
-  "itemGroup.janoeo.world.group": "JANOEO World",
-  "block.janoeo_world.oak_leaves_apple": "Oak apple leaves"
+  "itemGroup.janoeo.world.group": "Janoeo World",
+  "block.janoeo_world.oak_leaves_apple": "Oak Apple Leaves",
+  "block.janoeo_world.cherry_leaves": "Cherry Leaves",
+  "block.janoeo_world.cherry_sapling": "Cherry Sapling",
+  "block.janoeo_world.cherry_log": "Cherry Log",
+  "block.janoeo_world.stripped_cherry_log": "Stripped Cherry Log",
+  "block.janoeo_world.cherry_planks": "Cherry Planks",
+  "block.janoeo_world.cherry_door": "Cherry Door",
+  "block.janoeo_world.cherry_trapdoor": "Cherry Trapdoor",
+  "block.janoeo_world.cherry.button": "Cherry Button",
+  "block.janoeo_world.cherry_pressure_plate": "Cherry Pressure Plate",
+  "block.janoeo_world.cherry_fence": "Cherry Fence",
+  "block.janoeo_world.cherry_fence_gate": "Cherry Fence Gate",
+  "block.janoeo_world.cherry_slab": "Cherry Slab",
+  "block.janoeo_world.cherry_stairs": "Cherry Stairs",
+  "item.janoeo_world.cherry": "Cherry"
 }

@@ -7,11 +7,14 @@
   + Cherry stripped log
   + Cherry planks
   + Cherry leaves
+  + Cherry trapdoor
+  + Cherry fence
+  + Cherry fence gate
   + Cherry
 + Fix
   + Flammability of Oak apple leave
 + Update
-  + Diabolo lib from 1.0.3 to 1.0.5
+  + Diabolo lib from 1.0.3 to 1.0.6
 
 ### 4.1.0.63-experimental
 + Add compatibility with DiaboloLib

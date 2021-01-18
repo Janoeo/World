@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CC"
+  ],
+  "key": {
+    "C": {
+      "item": "janoeo_world:cherry_planks"
+    }
+  },
+  "result": {
+    "item": "janoeo_world:cherry_pressure_plate"
+  }
+}

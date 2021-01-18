@@ -1,23 +1,17 @@
 package fr.alasdiablo.janoeo.worlds.util;
 
-import com.google.common.collect.Maps;
+import fr.alasdiablo.diolib.gui.GroundItemGroup;
+import fr.alasdiablo.diolib.util.BlockHelper;
 import fr.alasdiablo.janoeo.worlds.init.ModBlocks;
 import fr.alasdiablo.janoeo.worlds.world.gen.LeavesGenerator;
 import fr.alasdiablo.janoeo.worlds.world.gen.TreeGenerator;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.FireBlock;
-import net.minecraft.item.AxeItem;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-
 public class ModSetup {
 
-    public ItemGroup janoeoWorldGroup = new ItemGroup("janoeo.world.group") {
+    public ItemGroup janoeoWorldGroup = new GroundItemGroup("janoeo.world.group") {
         @Override
         public ItemStack createIcon() {
             return new ItemStack(ModBlocks.OAK_LEAVES_APPLE);
@@ -32,34 +26,20 @@ public class ModSetup {
     }
 
     public void initFlammable() {
-        Consumer<Block> registerPlanks = (block) -> {
-            FireBlock fireblock = (FireBlock) Blocks.FIRE;
-            fireblock.setFireInfo(block, 5, 20);
-        };
-        Consumer<Block> registerLogs = (block) -> {
-            FireBlock fireblock = (FireBlock) Blocks.FIRE;
-            fireblock.setFireInfo(block, 5, 5);
-        };
-        Consumer<Block> registerLeaves = (block) -> {
-            FireBlock fireblock = (FireBlock) Blocks.FIRE;
-            fireblock.setFireInfo(block, 30, 60);
-        };
+        BlockHelper.setFlammability(ModBlocks.OAK_LEAVES_APPLE, BlockHelper.LEAVES_ENCOURAGEMENT, BlockHelper.LEAVES_FLAMMABILITY);
+        BlockHelper.setFlammability(ModBlocks.CHERRY_LEAVES, BlockHelper.LEAVES_ENCOURAGEMENT, BlockHelper.LEAVES_FLAMMABILITY);
 
-        registerLeaves.accept(ModBlocks.OAK_LEAVES_APPLE);
-        registerLeaves.accept(ModBlocks.CHERRY_LEAVES);
+        BlockHelper.setFlammability(ModBlocks.CHERRY_LOG, BlockHelper.LOG_ENCOURAGEMENT, BlockHelper.LOG_FLAMMABILITY);
+        BlockHelper.setFlammability(ModBlocks.STRIPPED_CHERRY_LOG, BlockHelper.LOG_ENCOURAGEMENT, BlockHelper.LOG_FLAMMABILITY);
 
-        registerLogs.accept(ModBlocks.CHERRY_LOG);
-        registerLogs.accept(ModBlocks.STRIPPED_CHERRY_LOG);
+        BlockHelper.setFlammability(ModBlocks.CHERRY_PLANKS, BlockHelper.PLANKS_ENCOURAGEMENT, BlockHelper.PLANKS_ENCOURAGEMENT);
 
-        registerPlanks.accept(ModBlocks.CHERRY_PLANKS);
+        BlockHelper.setFlammability(ModBlocks.CHERRY_SLAB, BlockHelper.SLAB_ENCOURAGEMENT, BlockHelper.SLAB_FLAMMABILITY);
+
+        BlockHelper.setFlammability(ModBlocks.CHERRY_STAIRS, BlockHelper.STAIRS_ENCOURAGEMENT, BlockHelper.STAIRS_FLAMMABILITY);
     }
 
     public void initStrippable() {
-        BiConsumer<Block, Block> register = (log, stripped_log) -> {
-            AxeItem.BLOCK_STRIPPING_MAP = Maps.newHashMap(AxeItem.BLOCK_STRIPPING_MAP);
-            AxeItem.BLOCK_STRIPPING_MAP.put(log, stripped_log);
-        };
-
-        register.accept(ModBlocks.CHERRY_LOG, ModBlocks.STRIPPED_CHERRY_LOG);
+        BlockHelper.createStrippableBlock(ModBlocks.CHERRY_LOG, ModBlocks.STRIPPED_CHERRY_LOG);
     }
 }

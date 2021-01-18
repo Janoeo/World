@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "janoeo_world:cherry_planks"
+    }
+  ],
+  "result": {
+    "item": "janoeo_world:cherry_button"
+  }
+}
