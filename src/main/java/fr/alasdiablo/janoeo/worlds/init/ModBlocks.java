@@ -25,14 +25,14 @@ public class ModBlocks {
     public static final Block CHERRY_SAPLING = new DioSaplingBlock(new CherryTree(), Registries.CHERRY_SAPLING);
     public static final Block CHERRY_LOG = new DioLogBlock(MaterialColor.PINK, Registries.CHERRY_LOG);
     public static final Block STRIPPED_CHERRY_LOG = new DioLogBlock(MaterialColor.PINK, Registries.STRIPPED_CHERRY_LOG);
-    public static final Block CHERRY_PLANKS = new DioLeavesBlock(Registries.CHERRY_PLANKS);
+    public static final Block CHERRY_PLANKS = new DioPlanksBlock(MaterialColor.PINK, Registries.CHERRY_PLANKS);
     public static final Block CHERRY_DOOR = new DioDoorBlock(MaterialColor.PINK, Registries.CHERRY_DOOR);
     public static final Block CHERRY_BUTTON = new DioWoodButtonBlock(Registries.CHERRY_BUTTON);
     public static final Block CHERRY_PRESSURE_PLATE = new DioPressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, MaterialColor.PINK, Registries.CHERRY_PRESSURE_PLATE);
     public static final Block CHERRY_FENCE = new DioFenceBlock(CHERRY_PLANKS.getMaterialColor(), Registries.CHERRY_FENCE);
     public static final Block CHERRY_FENCE_GATE = new DioFenceGateBlock(CHERRY_PLANKS.getMaterialColor(), Registries.CHERRY_FENCE_GATE);
     public static final Block CHERRY_SLAB = new SlabBlock(AbstractBlock.Properties.create(Material.WOOD, MaterialColor.PINK).hardnessAndResistance(2.0F, 3.0F).sound(SoundType.WOOD)).setRegistryName(Registries.CHERRY_SLAB);
-    public static final Block CHERRY_STAIRS = new StairsBlock(CHERRY_PLANKS::getDefaultState, AbstractBlock.Properties.from(CHERRY_PLANKS)).setRegistryName(Registries.CHERRY_STAIRS);
+    public static final Block CHERRY_STAIRS = new StairsBlock(CHERRY_PLANKS::getDefaultState, Block.Properties.from(CHERRY_PLANKS)).setRegistryName(Registries.CHERRY_STAIRS);
     public static final Block CHERRY_TRAPDOOR = new TrapDoorBlock(AbstractBlock.Properties.create(Material.WOOD, MaterialColor.PINK).hardnessAndResistance(3.0F).sound(SoundType.WOOD).notSolid().setAllowsSpawn((state, reader, pos, entity) -> false)).setRegistryName(Registries.CHERRY_TRAPDOOR);
 
     @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)

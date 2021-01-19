@@ -1,3 +1,6 @@
+### 5.1.0.66
++ Fix crash
+
 ### 5.1.0.65
 + Add
   + Cherry tree

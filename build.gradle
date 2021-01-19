@@ -12,7 +12,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-def buildNumber = '65'
+def buildNumber = '66'
 def isExperimental = false
 def previewBuildNumber = '1'
 def isPreview = false
