@@ -3,7 +3,7 @@ package fr.alasdiablo.janoeo.world;
 import fr.alasdiablo.diolib.gui.GroundItemGroup;
 import fr.alasdiablo.diolib.util.BlockHelper;
 import fr.alasdiablo.janoeo.world.init.WorldBlocks;
-import fr.alasdiablo.janoeo.world.init.WorldItems;
+import fr.alasdiablo.janoeo.world.world.gen.WorldStructureFeatures;
 import fr.alasdiablo.janoeo.world.util.ClientProxy;
 import fr.alasdiablo.janoeo.world.util.CommonProxy;
 import fr.alasdiablo.janoeo.world.world.WorldGen;
@@ -13,6 +13,8 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.levelgen.feature.StructureFeature;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
@@ -42,12 +44,14 @@ public class World {
         modBus.addGenericListener(Block.class, WorldBlocks::initBlock);
         modBus.addGenericListener(Item.class, WorldBlocks::initItem);
         // modBus.addGenericListener(Item.class, WorldItems::init);
+        modBus.addGenericListener(StructureFeature.class, WorldStructureFeatures::init);
+        MinecraftForge.EVENT_BUS.addListener(WorldGen::initStructure);
     }
 
     private void setup(final FMLCommonSetupEvent event) {
         this.initFlammable();
         this.initStrippables();
-        WorldGen.init();
+        WorldGen.initOther();
     }
 
     private void initFeatures(RegistryEvent.NewRegistry e) {
