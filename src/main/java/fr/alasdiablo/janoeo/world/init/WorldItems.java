@@ -1,17 +1,17 @@
-package fr.alasdiablo.janoeo.worlds.init;
+package fr.alasdiablo.janoeo.world.init;
 
 import fr.alasdiablo.diolib.util.RegistryHelper;
-import fr.alasdiablo.janoeo.worlds.World;
-import fr.alasdiablo.janoeo.worlds.util.Registries;
-import net.minecraft.item.Item;
+import fr.alasdiablo.janoeo.world.World;
+import fr.alasdiablo.janoeo.world.Registries;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-public class ModItems {
+public class WorldItems {
 
     public static Item CHERRY
-            = new Item(new Item.Properties().group(World.setup.janoeoWorldGroup).food(ModFoods.CHERRY)).setRegistryName(Registries.CHERRY);
+            = new Item(new Item.Properties().tab(World.GROUP).food(WorldFoods.CHERRY)).setRegistryName(Registries.CHERRY);
 
     @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistryEvents {

@@ -1,4 +1,4 @@
-package fr.alasdiablo.janoeo.worlds.util;
+package fr.alasdiablo.janoeo.world;
 
 public class Registries {
 

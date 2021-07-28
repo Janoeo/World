@@ -1,35 +1,35 @@
 buildscript {
     repositories {
-        maven { url = 'https://files.minecraftforge.net/maven' }
-        jcenter()
+        maven { url = 'https://maven.minecraftforge.net' }
         mavenCentral()
     }
     dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
     }
 }
+
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-def buildNumber = '66'
-def isExperimental = false
+def buildNumber = '75'
+def isExperimental = true
 def previewBuildNumber = '1'
 def isPreview = false
-version = "5.1.0.${buildNumber}"
+version = "6.1.0.${buildNumber}"
 if (isExperimental) {
     version += '-experimental'
 }
 if (isPreview) {
     version = 'Preview-' + previewBuildNumber
 }
-group = 'fr.alasdiablo.janoeo.worlds'
-archivesBaseName = 'Janoeo-World'
+group = 'fr.alasdiablo.janoeo.world'
+archivesBaseName = 'Janoeo World'
 
-sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
+java.toolchain.languageVersion = JavaLanguageVersion.of(16)
 
 minecraft {
-    mappings channel: 'snapshot', version: '20201028-1.16.3'
+    mappings channel: 'official', version: '1.17.1'
     runs {
         client {
             workingDirectory project.file('run')
@@ -57,7 +57,7 @@ minecraft {
             workingDirectory project.file('run')
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'forge.logging.console.level', 'debug'
-            args '--mod', 'janoeo_world', '--all', '--output', file('src/generated/resources/')
+            args '--mod', 'janoeo_world', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
             mods {
                 janoeo_world {
                     source sourceSets.main
@@ -70,19 +70,20 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.16.4-35.1.0'
-    compile fileTree(dir:'lib', include:'*.jar')
+    minecraft 'net.minecraftforge:forge:1.17.1-37.0.1'
+    // runtimeOnly fileTree(dir:'lib', include:'*.jar')
+    compileOnly fileTree(dir:'lib', include:'*.jar')
 }
 
 jar {
     manifest {
         attributes([
-            "Specification-Title": "Janoeo-World",
-            "Specification-Vendor": "AlasDiablo, lIotaMiu, Egame257, Safyrus",
-            "Specification-Version": "1",
-            "Implementation-Title": project.name,
-            "Implementation-Version": "${version}",
-            "Implementation-Vendor" :"AlasDiablo, lIotaMiu, Egame257, Safyrus",
+            "Specification-Title"     : "Janoeo World",
+            "Specification-Vendor"    : "AlasDiablo, lIotaMiu, Egame257, Safyrus",
+            "Specification-Version"   : "1",
+            "Implementation-Title"    : project.name,
+            "Implementation-Version"  : project.jar.archiveVersion,
+            "Implementation-Vendor"   :"AlasDiablo, lIotaMiu, Egame257, Safyrus",
             "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
