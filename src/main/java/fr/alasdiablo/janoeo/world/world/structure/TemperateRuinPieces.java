@@ -2,7 +2,6 @@ package fr.alasdiablo.janoeo.world.world.structure;
 
 import com.google.common.collect.ImmutableMap;
 import fr.alasdiablo.janoeo.world.Registries;
-import fr.alasdiablo.janoeo.world.world.gen.WorldStructureFeatures;
 import fr.alasdiablo.janoeo.world.world.gen.WorldStructurePieceType;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
@@ -29,21 +28,33 @@ import java.util.Random;
 
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
-public class OasisPieces {
-    private static final ResourceLocation STRUCTURE_LOCATION_OASIS = Registries.rl("desert/oasis");
+public class TemperateRuinPieces {
 
-    private static final Map<ResourceLocation, BlockPos> PIVOTS = ImmutableMap.of(STRUCTURE_LOCATION_OASIS, new BlockPos(7, 4, 7));
-    private static final Map<ResourceLocation, BlockPos> OFFSETS = ImmutableMap.of(STRUCTURE_LOCATION_OASIS, new BlockPos(0, -4 , 0));
+    private static final ResourceLocation STRUCTURE_LOCATION_RUIN_1 = Registries.rl("temperate/ruin/small_1");
+    private static final ResourceLocation STRUCTURE_LOCATION_RUIN_2 = Registries.rl("temperate/ruin/small_2");
 
-    public static void addPieces(StructureManager structureManager, BlockPos pos, Rotation rotation, StructurePieceAccessor structurePieceAccessor) {
-        structurePieceAccessor.addPiece(new OasisPiece(structureManager, STRUCTURE_LOCATION_OASIS, pos, rotation, 0));
+    private static final Map<ResourceLocation, BlockPos> PIVOTS = ImmutableMap.of(
+            STRUCTURE_LOCATION_RUIN_1, new BlockPos(3, 0, 3),
+            STRUCTURE_LOCATION_RUIN_2, new BlockPos(4, 0, 4)
+    );
+    private static final Map<ResourceLocation, BlockPos> OFFSETS = ImmutableMap.of(
+            STRUCTURE_LOCATION_RUIN_1, new BlockPos(0, 0, 0),
+            STRUCTURE_LOCATION_RUIN_2, new BlockPos(0, 0, 0)
+    );
+
+    public static void addPieces(StructureManager structureManager, BlockPos pos, Rotation rotation, StructurePieceAccessor structurePieceAccessor, Random random) {
+        if (random.nextDouble() < 0.5D) {
+            structurePieceAccessor.addPiece(new TemperateRuinPiece(structureManager, STRUCTURE_LOCATION_RUIN_1, pos, rotation, 0));
+        } else {
+            structurePieceAccessor.addPiece(new TemperateRuinPiece(structureManager, STRUCTURE_LOCATION_RUIN_2, pos, rotation, 0));
+        }
     }
 
-    public static class OasisPiece extends TemplateStructurePiece {
+    public static class TemperateRuinPiece extends TemplateStructurePiece {
 
-        public OasisPiece(StructureManager structureManager, ResourceLocation resourceLocation, BlockPos pos, Rotation rotation, int p_71248_) {
+        public TemperateRuinPiece(StructureManager structureManager, ResourceLocation resourceLocation, BlockPos pos, Rotation rotation, int p_71248_) {
             super(
-                    WorldStructurePieceType.OASIS_STRUCTURE_PIECE,
+                    WorldStructurePieceType.TEMPERATE_RUIN_STRUCTURE_PIECE,
                     0,
                     structureManager,
                     resourceLocation,
@@ -53,9 +64,9 @@ public class OasisPieces {
             );
         }
 
-        public OasisPiece(ServerLevel level, CompoundTag compoundTag) {
+        public TemperateRuinPiece(ServerLevel level, CompoundTag compoundTag) {
             super(
-                    WorldStructurePieceType.OASIS_STRUCTURE_PIECE,
+                    WorldStructurePieceType.TEMPERATE_RUIN_STRUCTURE_PIECE,
                     compoundTag,
                     level,
                     (resourceLocation) -> makeSettings(
@@ -68,13 +79,13 @@ public class OasisPieces {
             return (new StructurePlaceSettings())
                     .setRotation(rotation)
                     .setMirror(Mirror.NONE)
-                    .setRotationPivot(OasisPieces.PIVOTS.get(resourceLocation))
+                    .setRotationPivot(TemperateRuinPieces.PIVOTS.get(resourceLocation))
                     .addProcessor(BlockIgnoreProcessor.STRUCTURE_BLOCK);
         }
 
         private static BlockPos makePosition(ResourceLocation resourceLocation, BlockPos pos, int i) {
             return pos.offset(
-                    OasisPieces.OFFSETS.get(resourceLocation)
+                    TemperateRuinPieces.OFFSETS.get(resourceLocation)
             ).below(i);
         }
 
@@ -88,7 +99,7 @@ public class OasisPieces {
         public boolean postProcess(WorldGenLevel worldIn, StructureFeatureManager structureFeatureManager, ChunkGenerator chunkGenerator, Random random, BoundingBox boundingBox, ChunkPos chunkPos, BlockPos blockPos) {
             boundingBox.encapsulate(this.template.getBoundingBox(this.placeSettings, this.templatePosition));
             BlockPos prevTemplatePosition = this.templatePosition;
-            this.templatePosition = this.templatePosition.offset(0, -4, 0);
+            this.templatePosition = this.templatePosition.offset(0, -1, 0);
             boolean flag = super.postProcess(worldIn, structureFeatureManager, chunkGenerator, random, boundingBox, chunkPos, blockPos);
             this.templatePosition = prevTemplatePosition;
             return flag;

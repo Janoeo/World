@@ -3,7 +3,7 @@ package fr.alasdiablo.janoeo.world.world.gen;
 import fr.alasdiablo.diolib.world.WorldGenerationHelper;
 import fr.alasdiablo.janoeo.world.Registries;
 import fr.alasdiablo.janoeo.world.world.feature.OasisFeature;
-import net.minecraft.resources.ResourceLocation;
+import fr.alasdiablo.janoeo.world.world.feature.TemperateRuinFeature;
 import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
 import net.minecraft.world.level.levelgen.feature.StructureFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
@@ -16,11 +16,19 @@ public class WorldStructureFeature {
         NoiseGeneratorSettings.bootstrap().structureSettings().structureConfig().put(
                 OASIS, new StructureFeatureConfiguration(16, 8, 15938630)
         );
-        OASIS.setRegistryName(new ResourceLocation(Registries.MOD_ID, "oasis"));
+        OASIS.setRegistryName(Registries.rl(Registries.OASIS));
         registry.getRegistry().register(OASIS);
         WorldGenerationHelper.addNoiseAffectingFeature(OASIS);
+
+        NoiseGeneratorSettings.bootstrap().structureSettings().structureConfig().put(
+                TEMPERATE_RUIN, new StructureFeatureConfiguration(16, 8, 15938630)
+        );
+        TEMPERATE_RUIN.setRegistryName(Registries.rl(Registries.TEMPERATE_RUIN));
+        registry.getRegistry().register(TEMPERATE_RUIN);
+        WorldGenerationHelper.addNoiseAffectingFeature(TEMPERATE_RUIN);
     }
 
 
     public static final StructureFeature<NoneFeatureConfiguration> OASIS = new OasisFeature(NoneFeatureConfiguration.CODEC);
+    public static final StructureFeature<NoneFeatureConfiguration> TEMPERATE_RUIN = new TemperateRuinFeature(NoneFeatureConfiguration.CODEC);
 }

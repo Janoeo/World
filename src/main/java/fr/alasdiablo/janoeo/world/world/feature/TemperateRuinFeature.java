@@ -3,10 +3,10 @@ package fr.alasdiablo.janoeo.world.world.feature;
 import com.mojang.serialization.Codec;
 import fr.alasdiablo.janoeo.world.Registries;
 import fr.alasdiablo.janoeo.world.world.structure.OasisPieces;
+import fr.alasdiablo.janoeo.world.world.structure.TemperateRuinPieces;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.RegistryAccess;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.LevelHeightAccessor;
 import net.minecraft.world.level.biome.Biome;
@@ -14,6 +14,7 @@ import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraft.world.level.levelgen.feature.IglooFeature;
 import net.minecraft.world.level.levelgen.feature.StructureFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.structure.NoiseAffectingStructureStart;
@@ -23,13 +24,14 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public class OasisFeature extends StructureFeature<NoneFeatureConfiguration> {
+public class TemperateRuinFeature extends StructureFeature<NoneFeatureConfiguration> {
 
-    public OasisFeature(Codec<NoneFeatureConfiguration> codec) {
+    public TemperateRuinFeature(Codec<NoneFeatureConfiguration> codec) {
         super(codec);
     }
 
-    public StructureFeature.StructureStartFactory<NoneFeatureConfiguration> getStartFactory() {
+    @Override
+    public StructureStartFactory<NoneFeatureConfiguration> getStartFactory() {
         return FeatureStart::new;
     }
 
@@ -40,7 +42,7 @@ public class OasisFeature extends StructureFeature<NoneFeatureConfiguration> {
 
     @Override
     public String getFeatureName() {
-        return Registries.rl(Registries.OASIS).toString();
+        return Registries.rl(Registries.TEMPERATE_RUIN).toString();
     }
 
     public static class FeatureStart extends NoiseAffectingStructureStart<NoneFeatureConfiguration> {
@@ -50,9 +52,9 @@ public class OasisFeature extends StructureFeature<NoneFeatureConfiguration> {
 
         public void generatePieces(RegistryAccess registryAccess, ChunkGenerator chunkGenerator, StructureManager structureManager, ChunkPos chunkPos, Biome biome, NoneFeatureConfiguration featureConfiguration, LevelHeightAccessor levelHeightAccessor) {
             int y = chunkGenerator.getBaseHeight(chunkPos.getMinBlockX(), chunkPos.getMinBlockZ(), Heightmap.Types.WORLD_SURFACE_WG, levelHeightAccessor);
-            BlockPos blockpos = new BlockPos(chunkPos.getMinBlockX(), y + 4, chunkPos.getMinBlockZ());
+            BlockPos blockpos = new BlockPos(chunkPos.getMinBlockX(), y, chunkPos.getMinBlockZ());
             Rotation rotation = Rotation.getRandom(this.random);
-            OasisPieces.addPieces(structureManager, blockpos, rotation, this);
+            TemperateRuinPieces.addPieces(structureManager, blockpos, rotation, this, random);
         }
     }
 }

@@ -1,6 +1,12 @@
 package fr.alasdiablo.janoeo.world;
 
+import net.minecraft.resources.ResourceLocation;
+
 public class Registries {
+
+    public static ResourceLocation rl(String name) {
+        return new ResourceLocation(MOD_ID, name);
+    }
 
     public static final String MOD_ID = "janoeo_world";
 
@@ -19,4 +25,6 @@ public class Registries {
     public static final String CHERRY_SLAB = "cherry_slab";
     public static final String CHERRY_STAIRS = "cherry_stairs";
     public static final String CHERRY_TRAPDOOR = "cherry_trapdoor";
+    public static final String OASIS = "oasis";
+    public static final String TEMPERATE_RUIN = "temperate_ruin";
 }

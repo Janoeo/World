@@ -24,10 +24,20 @@ public class WorldGen {
         if (event.getName() != null) {
             ResourceKey<Biome> biome = ResourceKey.create(Registry.BIOME_REGISTRY, event.getName());
 
-            if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.OVERWORLD) &&
-                    (biome.equals(Biomes.DESERT) || biome.equals(Biomes.DESERT_HILLS) || biome.equals(Biomes.DESERT_LAKES))
+            if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.OVERWORLD)
+                    && (BiomeDictionary.hasType(biome, BiomeDictionary.Type.SANDY) && !BiomeDictionary.hasType(biome, BiomeDictionary.Type.MESA))
             ) {
                 generation.addStructureStart(WorldStructureFeatures.OASIS_FEATURE);
+            }
+
+            if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.OVERWORLD) &&
+                    (
+                            BiomeDictionary.hasType(biome, BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(biome, BiomeDictionary.Type.FOREST)
+                                    || BiomeDictionary.hasType(biome, BiomeDictionary.Type.JUNGLE) || BiomeDictionary.hasType(biome, BiomeDictionary.Type.SAVANNA)
+                                    || BiomeDictionary.hasType(biome, BiomeDictionary.Type.SWAMP)
+                    )
+            ) {
+                generation.addStructureStart(WorldStructureFeatures.TEMPERATE_RUIN_FEATURE);
             }
         }
     }
