@@ -13,9 +13,10 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.GenerationStep;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.feature.StructureFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import net.minecraft.world.level.levelgen.structure.StructureStart;
+import net.minecraft.world.level.levelgen.structure.NoiseAffectingStructureStart;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureManager;
 
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -42,15 +43,16 @@ public class OasisFeature extends StructureFeature<NoneFeatureConfiguration> {
         return new ResourceLocation(Registries.MOD_ID, "oasis").toString();
     }
 
-    public static class FeatureStart extends StructureStart<NoneFeatureConfiguration> {
+    public static class FeatureStart extends NoiseAffectingStructureStart<NoneFeatureConfiguration> {
         public FeatureStart(StructureFeature<NoneFeatureConfiguration> p_159888_, ChunkPos p_159889_, int p_159890_, long p_159891_) {
             super(p_159888_, p_159889_, p_159890_, p_159891_);
         }
 
         public void generatePieces(RegistryAccess registryAccess, ChunkGenerator chunkGenerator, StructureManager structureManager, ChunkPos chunkPos, Biome biome, NoneFeatureConfiguration featureConfiguration, LevelHeightAccessor levelHeightAccessor) {
-            BlockPos blockpos = new BlockPos(chunkPos.getMinBlockX(), 90, chunkPos.getMinBlockZ());
+            int y = chunkGenerator.getBaseHeight(chunkPos.getMinBlockX(), chunkPos.getMinBlockZ(), Heightmap.Types.WORLD_SURFACE_WG, levelHeightAccessor);
+            BlockPos blockpos = new BlockPos(chunkPos.getMinBlockX(), y + 4, chunkPos.getMinBlockZ());
             Rotation rotation = Rotation.getRandom(this.random);
-            OasisPieces.addPieces(structureManager, blockpos, rotation, this, this.random);
+            OasisPieces.addPieces(structureManager, blockpos, rotation, this);
         }
     }
 }

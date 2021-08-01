@@ -33,10 +33,10 @@ import java.util.Random;
 public class OasisPieces {
     private static final ResourceLocation STRUCTURE_LOCATION_OASIS = new ResourceLocation(Registries.MOD_ID, "desert/oasis");
 
-    private static final Map<ResourceLocation, BlockPos> PIVOTS = ImmutableMap.of(STRUCTURE_LOCATION_OASIS, new BlockPos(0, 0, 0));
-    private static final Map<ResourceLocation, BlockPos> OFFSETS = ImmutableMap.of(STRUCTURE_LOCATION_OASIS, new BlockPos(0, -4, 0));
+    private static final Map<ResourceLocation, BlockPos> PIVOTS = ImmutableMap.of(STRUCTURE_LOCATION_OASIS, new BlockPos(7, 4, 7));
+    private static final Map<ResourceLocation, BlockPos> OFFSETS = ImmutableMap.of(STRUCTURE_LOCATION_OASIS, new BlockPos(0, -4 , 0));
 
-    public static void addPieces(StructureManager structureManager, BlockPos pos, Rotation rotation, StructurePieceAccessor structurePieceAccessor, Random random) {
+    public static void addPieces(StructureManager structureManager, BlockPos pos, Rotation rotation, StructurePieceAccessor structurePieceAccessor) {
         structurePieceAccessor.addPiece(new OasisPieces.OasisPiece(structureManager, STRUCTURE_LOCATION_OASIS, pos, rotation, 0));
     }
 
@@ -87,9 +87,9 @@ public class OasisPieces {
 
         @Override
         public boolean postProcess(WorldGenLevel worldIn, StructureFeatureManager structureFeatureManager, ChunkGenerator chunkGenerator, Random random, BoundingBox boundingBox, ChunkPos chunkPos, BlockPos blockPos) {
-            int height = worldIn.getHeight(Heightmap.Types.WORLD_SURFACE_WG, this.templatePosition.getX(), this.templatePosition.getZ());
+            boundingBox.encapsulate(this.template.getBoundingBox(this.placeSettings, this.templatePosition));
             BlockPos prevTemplatePosition = this.templatePosition;
-            this.templatePosition = this.templatePosition.offset(0, height - 90, 0);
+            this.templatePosition = this.templatePosition.offset(0, -4, 0);
             boolean flag = super.postProcess(worldIn, structureFeatureManager, chunkGenerator, random, boundingBox, chunkPos, blockPos);
             this.templatePosition = prevTemplatePosition;
             return flag;

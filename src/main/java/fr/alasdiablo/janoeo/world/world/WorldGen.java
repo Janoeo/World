@@ -24,10 +24,8 @@ public class WorldGen {
         if (event.getName() != null) {
             ResourceKey<Biome> biome = ResourceKey.create(Registry.BIOME_REGISTRY, event.getName());
 
-            if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.OVERWORLD)
-                    || biome.equals(Biomes.DESERT)
-                    || biome.equals(Biomes.DESERT_HILLS)
-                    || biome.equals(Biomes.DESERT_LAKES)
+            if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.OVERWORLD) &&
+                    (biome.equals(Biomes.DESERT) || biome.equals(Biomes.DESERT_HILLS) || biome.equals(Biomes.DESERT_LAKES))
             ) {
                 generation.addStructureStart(WorldStructureFeatures.OASIS_FEATURE);
             }

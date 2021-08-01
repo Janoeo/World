@@ -24,6 +24,6 @@ Janoeo - World by AlasDiablo, lIotaMiu, Egame257 and Safyrus
 [[dependencies.janoeo_world]]
     modId="diolib"
     mandatory=true
-    versionRange="[2.0.13,)"
+    versionRange="[2.0.15,)"
     ordering="AFTER"
     side="BOTH"
