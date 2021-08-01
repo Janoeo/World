@@ -14,7 +14,7 @@ public class WorldStructureFeature {
 
     public static void init(RegistryEvent.Register<StructureFeature<?>> registry) {
         NoiseGeneratorSettings.bootstrap().structureSettings().structureConfig().put(
-                OASIS, new StructureFeatureConfiguration(25, 10, 15938630)
+                OASIS, new StructureFeatureConfiguration(16, 8, 15938630)
         );
         OASIS.setRegistryName(new ResourceLocation(Registries.MOD_ID, "oasis"));
         registry.getRegistry().register(OASIS);

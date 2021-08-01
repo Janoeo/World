@@ -1,6 +1,5 @@
 package fr.alasdiablo.janoeo.world.world.gen;
 
-import fr.alasdiablo.diolib.world.WorldGenerationHelper;
 import fr.alasdiablo.janoeo.world.Registries;
 import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.resources.ResourceLocation;
