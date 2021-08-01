@@ -3,6 +3,8 @@ package fr.alasdiablo.janoeo.world;
 import fr.alasdiablo.diolib.gui.GroundItemGroup;
 import fr.alasdiablo.diolib.util.BlockHelper;
 import fr.alasdiablo.janoeo.world.init.WorldBlocks;
+import fr.alasdiablo.janoeo.world.init.WorldItems;
+import fr.alasdiablo.janoeo.world.world.gen.WorldStructureFeature;
 import fr.alasdiablo.janoeo.world.world.gen.WorldStructureFeatures;
 import fr.alasdiablo.janoeo.world.util.ClientProxy;
 import fr.alasdiablo.janoeo.world.util.CommonProxy;
@@ -43,8 +45,8 @@ public class World {
         modBus.addListener(this::initFeatures);
         modBus.addGenericListener(Block.class, WorldBlocks::initBlock);
         modBus.addGenericListener(Item.class, WorldBlocks::initItem);
-        // modBus.addGenericListener(Item.class, WorldItems::init);
-        modBus.addGenericListener(StructureFeature.class, WorldStructureFeatures::init);
+        modBus.addGenericListener(Item.class, WorldItems::init);
+        modBus.addGenericListener(StructureFeature.class, WorldStructureFeature::init);
         MinecraftForge.EVENT_BUS.addListener(WorldGen::initStructure);
     }
 

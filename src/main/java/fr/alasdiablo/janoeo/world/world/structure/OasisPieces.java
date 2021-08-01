@@ -3,6 +3,7 @@ package fr.alasdiablo.janoeo.world.world.structure;
 import com.google.common.collect.ImmutableMap;
 import fr.alasdiablo.janoeo.world.Registries;
 import fr.alasdiablo.janoeo.world.world.gen.WorldStructureFeatures;
+import fr.alasdiablo.janoeo.world.world.gen.WorldStructurePieceType;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -32,7 +33,7 @@ import java.util.Random;
 public class OasisPieces {
     private static final ResourceLocation STRUCTURE_LOCATION_OASIS = new ResourceLocation(Registries.MOD_ID, "desert/oasis");
 
-    private static final Map<ResourceLocation, BlockPos> PIVOTS = ImmutableMap.of(STRUCTURE_LOCATION_OASIS, new BlockPos(6, 0, 6));
+    private static final Map<ResourceLocation, BlockPos> PIVOTS = ImmutableMap.of(STRUCTURE_LOCATION_OASIS, new BlockPos(0, 0, 0));
     private static final Map<ResourceLocation, BlockPos> OFFSETS = ImmutableMap.of(STRUCTURE_LOCATION_OASIS, new BlockPos(0, -4, 0));
 
     public static void addPieces(StructureManager structureManager, BlockPos pos, Rotation rotation, StructurePieceAccessor structurePieceAccessor, Random random) {
@@ -43,7 +44,7 @@ public class OasisPieces {
 
         public OasisPiece(StructureManager structureManager, ResourceLocation resourceLocation, BlockPos pos, Rotation rotation, int p_71248_) {
             super(
-                    WorldStructureFeatures.OASIS_STRUCTURE_PIECE,
+                    WorldStructurePieceType.OASIS_STRUCTURE_PIECE,
                     0,
                     structureManager,
                     resourceLocation,
@@ -55,7 +56,7 @@ public class OasisPieces {
 
         public OasisPiece(ServerLevel level, CompoundTag compoundTag) {
             super(
-                    WorldStructureFeatures.OASIS_STRUCTURE_PIECE,
+                    WorldStructurePieceType.OASIS_STRUCTURE_PIECE,
                     compoundTag,
                     level,
                     (resourceLocation) -> makeSettings(
