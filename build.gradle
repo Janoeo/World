@@ -87,6 +87,7 @@ jar {
             "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
+    destinationDirectory.set(file(rootProject.getRootDir().getPath() + '/output'))
 }
 
 jar.finalizedBy('reobfJar')
