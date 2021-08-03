@@ -1,5 +1,5 @@
 [![Downloads](http://cf.way2muchnoise.eu/full_janoeo-world_downloads.svg?badge_style=for_the_badge)](https://www.curseforge.com/minecraft/mc-mods/janoeo-world)
-[![Versions](http://cf.way2muchnoise.eu/versions/janoeo-world.svg?badge_style=for_the_badge)](https://www.curseforge.com/minecraft/mc-mods/janoeo/files)
+[![Versions](http://cf.way2muchnoise.eu/versions/janoeo-world.svg?badge_style=for_the_badge)](https://www.curseforge.com/minecraft/mc-mods/janoeo-world/files)
 [![size](https://img.shields.io/github/repo-size/Janoeo/World?style=for-the-badge)](https://github.com/Janoeo/World)
 [![license](https://img.shields.io/github/license/Janoeo/World?style=for-the-badge)](https://github.com/Janoeo/World/blob/master/LICENSE)
 [![discord](https://img.shields.io/discord/630863620842061877?style=for-the-badge)](https://discord.gg/KkzqnzA)
