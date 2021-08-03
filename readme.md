@@ -83,5 +83,6 @@ If you want to contribute you can to it via:
 - [AlasDiablo](https://github.com/AlasDiablo) / [lIotaMiu](https://github.com/liotamiu) - Original author, main contributor
 - [Safyrus](https://github.com/Safyrus) - Lead artist
 - [Dadadodu](https://github.com/Dadadodu) - Testing, proposition
+- Raegann - Structure builder
 - [Any Contributor](https://github.com/Janoeo/World/graphs/contributors) - Bug report, bug fix
 - And people who download my mod!

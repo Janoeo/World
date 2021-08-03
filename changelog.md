@@ -1,3 +1,16 @@
+### 6.1.0.75
+
+#### Change
++ Update texture of Cherry tree (Log, Leaves)
+
+#### Add
++ Structure Oasis
++ Structure Ruine (Temperate Small 1 & Temperate Small 2)
++ Wood variant of Cherry log
+
+#### Refactor
++ Cleanup a lot of code for match Janoeo V6 Code conduct
+
 ### 5.1.0.66
 + Fix crash
 

@@ -69,10 +69,16 @@ minecraft {
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
+repositories {
+    maven { url = 'https://www.cursemaven.com/' }
+}
+
 dependencies {
     minecraft 'net.minecraftforge:forge:1.17.1-37.0.18'
     // runtimeOnly fileTree(dir:'lib', include:'*.jar')
     compileOnly fileTree(dir:'lib', include:'*.jar')
+
+    implementation fg.deobf("curse.maven:catalogue-459701:3399552")  // Catalogue
 }
 
 jar {

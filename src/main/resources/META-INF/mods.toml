@@ -1,13 +1,19 @@
 modLoader="javafml"
 loaderVersion="[37,)"
 license="LGPL-3.0"
+issueTrackerURL = "https://github.com/Janoeo/World/issues"
+
 [[mods]]
 modId="janoeo_world"
 version="${file.jarVersion}"
-displayName="Janoeo - World"
-authors="AlasDiablo, lIotaMiu, Egame257 and Safyrus"
+displayName="Janoeo World"
+logoFile="janoeo_world.png"
+itemIcon="janoeo_world:cherry_sapling"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/janoeo-world"
+authors="AlasDiablo, lIotaMiu, Safyrus"
+credits="Structure builder: Raegann"
 description='''
-Janoeo - World by AlasDiablo, lIotaMiu, Egame257 and Safyrus
+A mod who add structure and more!
 '''
 [[dependencies.janoeo_world]]
     modId="forge"
