@@ -1,31 +1,87 @@
-# Janoeo World
+[![Downloads](http://cf.way2muchnoise.eu/full_janoeo-world_downloads.svg?badge_style=for_the_badge)](https://www.curseforge.com/minecraft/mc-mods/janoeo-world)
+[![Versions](http://cf.way2muchnoise.eu/versions/janoeo-world.svg?badge_style=for_the_badge)](https://www.curseforge.com/minecraft/mc-mods/janoeo/files)
+[![size](https://img.shields.io/github/repo-size/Janoeo/World?style=for-the-badge)](https://github.com/Janoeo/World)
+[![license](https://img.shields.io/github/license/Janoeo/World?style=for-the-badge)](https://github.com/Janoeo/World/blob/master/LICENSE)
+[![discord](https://img.shields.io/discord/630863620842061877?style=for-the-badge)](https://discord.gg/KkzqnzA)
 
-<img src="https://raw.githubusercontent.com/AlasDiablo/JANOEO-World/master/logo.png" align=right width=128px />
+<div align="center">
+  <a href="https://github.com/Janoeo/World">
+    <img src="https://raw.githubusercontent.com/Janoeo/Texture/master/logo/Janoeo%20-%20World%20-%20V6%20-%20Banner.png" alt="Logo" style="border-radius: 54px 6px">
+  </a>
+  <p align="center">
+    A mod who add ore and more!
+    <br />
+    <a href="#download--mirror">Download</a>
+    ·
+    <a href="https://github.com/Janoeo/World/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/Janoeo/World/issues">Request Feature</a>
+  </p>
+</div>
 
-[![Downloads](http://cf.way2muchnoise.eu/full_janoeo-world_downloads.svg)](https://www.curseforge.com/minecraft/mc-mods/janoeo-world)
-[![Versions](http://cf.way2muchnoise.eu/versions/janoeo-world.svg)](https://www.curseforge.com/minecraft/mc-mods/janoeo/files)
-[![size](https://img.shields.io/github/repo-size/AlasDiablo/JANOEO-World)](https://github.com/AlasDiablo/JANOEO-World)
-[![license](https://img.shields.io/github/license/AlasDiablo/JANOEO-World)](https://github.com/AlasDiablo/JANOEO-World/blob/master/LICENSE)
-[![discord](https://img.shields.io/discord/630863620842061877)](https://discord.gg/KkzqnzA)
+<details open="open">
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#screenshot">Screenshot</a></li>
+        <li><a href="#download--mirror">Download | Mirror</a></li>
+        <li><a href="#dependencies">Dependencies</a></li>
+      </ul>
+    </li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgements">Acknowledgements</a></li>
+  </ol>
+</details>
 
-## What is this mod?
-This mod is a companion for my main mod Janoeo.
-Janoeo World have for goal to make more beautiful the Minecraft world.
+## About The Project
+
+***Janoeo World*** is the mod who add new feature to the world.
+
+***Janoeo World*** aim to add Trees, Structure and more!
+
+### screenshot
+
+Soon
+
+### Download | Mirror
+
+- [Curseforge](https://www.curseforge.com/minecraft/mc-mods/janoeo-world)
+- [Github](https://github.com/Janoeo/World/releases)
+
+### Dependencies
+
++ Required
+    + [DiaboloLib](https://www.curseforge.com/minecraft/mc-mods/diabololib)
+
+## Contributing
+
+If you want to contribute you can to it via:
+
+- [Bug report](https://github.com/Janoeo/World/issues)
+- [Feature request](https://github.com/Janoeo/World/issues)
+- [Bug fix](https://github.com/Janoeo/World/pulls)
+- [Any useful code change](https://github.com/Janoeo/World/pulls)
+- If you want to give a donation you can't because we don't have a Patreon(or anything like this), for now you just need
+  to download the mod on CurseForge!
 
 ## License
 
 - The source code is under [LGPL-3.0](https://www.gnu.org/licenses/lgpl-3.0.en.html)
-- The texture (and everything related to art) is under [CC BY-SA 3.0 FR](https://creativecommons.org/licenses/by-sa/3.0/fr/deed.en)
+- The texture (and everything related to art) is
+  under [CC BY-SA 3.0 FR](https://creativecommons.org/licenses/by-sa/3.0/fr/deed.en)
 
-## Why did you make this mod?
+## Contact
 
-I just wanted to make a useful mod for other people.
+- Contact us via [Discord](https://discord.gg/KkzqnzA)
 
-## Dependencies
+## Acknowledgements
 
-#### Required
-+ [JANOEO](https://www.curseforge.com/minecraft/mc-mods/janoeo)
-
-## Can I use this in a modpack?
-
-Yes you can, just remember to put the name of the mod in the description of your modpack!
+- [AlasDiablo](https://github.com/AlasDiablo) / [lIotaMiu](https://github.com/liotamiu) - Original author, main contributor
+- [Safyrus](https://github.com/Safyrus) - Lead artist
+- [Dadadodu](https://github.com/Dadadodu) - Testing, proposition
+- [Any Contributor](https://github.com/Janoeo/World/graphs/contributors) - Bug report, bug fix
+- And people who download my mod!
