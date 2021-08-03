@@ -1,6 +1,0 @@
-{
-    "parent": "minecraft:block/leaves",
-    "textures": {
-        "all": "janoeo_world:block/cherry_leaves"
-    }
-}

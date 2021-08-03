@@ -14,5 +14,7 @@
   "block.janoeo_world.cherry_fence_gate": "Cherry Fence Gate",
   "block.janoeo_world.cherry_slab": "Cherry Slab",
   "block.janoeo_world.cherry_stairs": "Cherry Stairs",
-  "item.janoeo_world.cherry": "Cherry"
+  "item.janoeo_world.cherry": "Cherry",
+  "block.janoeo_world.cherry_wood": "Cherry Wood",
+  "block.janoeo_world.stripped_cherry_wood": "Stripped Cherry Wood"
 }

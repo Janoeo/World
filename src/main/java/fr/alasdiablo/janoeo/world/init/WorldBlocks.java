@@ -27,6 +27,8 @@ public class WorldBlocks {
     public static final Block CHERRY_SAPLING = createSapling(new CherryTreeGrower(), Registries.CHERRY_SAPLING);
     public static final Block CHERRY_LOG = createLog(MaterialColor.WOOD, MaterialColor.COLOR_PINK, Registries.CHERRY_LOG);
     public static final Block STRIPPED_CHERRY_LOG = createLog(MaterialColor.COLOR_PINK, MaterialColor.COLOR_PINK, Registries.STRIPPED_CHERRY_LOG);
+    public static final Block CHERRY_WOOD = createLog(MaterialColor.WOOD, MaterialColor.COLOR_PINK, Registries.CHERRY_WOOD);
+    public static final Block STRIPPED_CHERRY_WOOD = createLog(MaterialColor.COLOR_PINK, MaterialColor.COLOR_PINK, Registries.STRIPPED_CHERRY_WOOD);
     public static final Block CHERRY_PLANKS = createPlanks(MaterialColor.COLOR_PINK, Registries.CHERRY_PLANKS);
     public static final Block CHERRY_DOOR = createDoor(MaterialColor.COLOR_PINK, Registries.CHERRY_DOOR);
     public static final Block CHERRY_BUTTON = createButton(Registries.CHERRY_BUTTON);
@@ -42,10 +44,11 @@ public class WorldBlocks {
 
         RegistryHelper.registerBlock(event.getRegistry(),
                 OAK_LEAVES_APPLE, CHERRY_LEAVES, CHERRY_SAPLING,
-                CHERRY_LOG, STRIPPED_CHERRY_LOG, CHERRY_PLANKS,
-                CHERRY_DOOR, CHERRY_BUTTON, CHERRY_PRESSURE_PLATE,
-                CHERRY_FENCE, CHERRY_FENCE_GATE, CHERRY_SLAB,
-                CHERRY_STAIRS, CHERRY_TRAPDOOR
+                CHERRY_LOG, STRIPPED_CHERRY_LOG, CHERRY_WOOD,
+                STRIPPED_CHERRY_WOOD, CHERRY_PLANKS, CHERRY_DOOR,
+                CHERRY_BUTTON, CHERRY_PRESSURE_PLATE, CHERRY_FENCE,
+                CHERRY_FENCE_GATE, CHERRY_SLAB, CHERRY_STAIRS,
+                CHERRY_TRAPDOOR
         );
 
         if (FMLEnvironment.dist == Dist.CLIENT) {
@@ -69,10 +72,11 @@ public class WorldBlocks {
 
         RegistryHelper.registerBlockItem(event.getRegistry(), properties,
                 OAK_LEAVES_APPLE, CHERRY_LEAVES, CHERRY_SAPLING,
-                CHERRY_LOG, STRIPPED_CHERRY_LOG, CHERRY_PLANKS,
-                CHERRY_DOOR, CHERRY_BUTTON, CHERRY_PRESSURE_PLATE,
-                CHERRY_FENCE, CHERRY_FENCE_GATE, CHERRY_SLAB,
-                CHERRY_STAIRS, CHERRY_TRAPDOOR
+                CHERRY_LOG, STRIPPED_CHERRY_LOG, CHERRY_WOOD,
+                STRIPPED_CHERRY_WOOD, CHERRY_PLANKS, CHERRY_DOOR,
+                CHERRY_BUTTON, CHERRY_PRESSURE_PLATE, CHERRY_FENCE,
+                CHERRY_FENCE_GATE, CHERRY_SLAB, CHERRY_STAIRS,
+                CHERRY_TRAPDOOR
         );
     }
 

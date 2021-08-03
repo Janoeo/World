@@ -1,5 +1,6 @@
 package fr.alasdiablo.janoeo.world.data;
 
+import fr.alasdiablo.janoeo.world.Registries;
 import fr.alasdiablo.janoeo.world.init.WorldBlocks;
 import net.minecraft.data.*;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -10,8 +11,8 @@ import net.minecraftforge.common.Tags;
 
 import java.util.function.Consumer;
 
-public class ModRecipes extends RecipeProvider {
-    public ModRecipes(DataGenerator generatorIn) {
+public class WorldRecipeProvider extends RecipeProvider {
+    public WorldRecipeProvider(DataGenerator generatorIn) {
         super(generatorIn);
     }
 
@@ -21,12 +22,12 @@ public class ModRecipes extends RecipeProvider {
         ShapelessRecipeBuilder.shapeless(WorldBlocks.CHERRY_PLANKS, 4)
                 .requires(WorldBlocks.CHERRY_LOG)
                 .unlockedBy("has_cherry_log_block", has(WorldBlocks.CHERRY_LOG))
-                .save(consumer,"cherry_planks_from_cherry_log");
+                .save(consumer, Registries.rl("cherry_planks_from_cherry_log"));
 
         ShapelessRecipeBuilder.shapeless(WorldBlocks.CHERRY_PLANKS, 4)
                 .requires(WorldBlocks.STRIPPED_CHERRY_LOG)
                 .unlockedBy("has_cherry_log_block", has(WorldBlocks.STRIPPED_CHERRY_LOG))
-                .save(consumer, "cherry_planks_from_stripped_cherry_log");
+                .save(consumer, Registries.rl("cherry_planks_from_stripped_cherry_log"));
 
         ShapelessRecipeBuilder.shapeless(WorldBlocks.CHERRY_BUTTON)
                 .requires(WorldBlocks.CHERRY_PLANKS)
@@ -82,6 +83,20 @@ public class ModRecipes extends RecipeProvider {
                 .pattern("CCC")
                 .pattern("CCC")
                 .unlockedBy("has_cherry_planks_block", has(WorldBlocks.CHERRY_PLANKS))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(WorldBlocks.CHERRY_WOOD, 3)
+                .define('#', WorldBlocks.CHERRY_LOG)
+                .pattern("##")
+                .pattern("##")
+                .unlockedBy("has_cherry_log_block", has(WorldBlocks.CHERRY_LOG))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(WorldBlocks.STRIPPED_CHERRY_WOOD, 3)
+                .define('#', WorldBlocks.STRIPPED_CHERRY_LOG)
+                .pattern("##")
+                .pattern("##")
+                .unlockedBy("has_stripped_cherry_log_block", has(WorldBlocks.STRIPPED_CHERRY_LOG))
                 .save(consumer);
     }
 

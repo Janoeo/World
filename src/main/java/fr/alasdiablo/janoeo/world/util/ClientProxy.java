@@ -3,8 +3,6 @@ package fr.alasdiablo.janoeo.world.util;
 import fr.alasdiablo.diolib.util.ColorsHelper;
 import fr.alasdiablo.janoeo.world.init.WorldBlocks;
 
-import java.awt.Color;
-
 public class ClientProxy extends CommonProxy {
 
     @Override

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "janoeo_world:block/cherry_planks",
-    "top": "janoeo_world:block/cherry_planks",
-    "side": "janoeo_world:block/cherry_planks"
-  }
-}
