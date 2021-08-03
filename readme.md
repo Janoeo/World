@@ -9,7 +9,7 @@
     <img src="https://raw.githubusercontent.com/Janoeo/Texture/master/logo/Janoeo%20-%20World%20-%20V6%20-%20Banner.png" alt="Logo" style="border-radius: 54px 6px">
   </a>
   <p align="center">
-    A mod who add ore and more!
+    A mod who add structure and more!
     <br />
     <a href="#download--mirror">Download</a>
     ·
