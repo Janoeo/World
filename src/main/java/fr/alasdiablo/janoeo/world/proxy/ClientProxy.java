@@ -1,6 +1,6 @@
-package fr.alasdiablo.janoeo.world.util;
+package fr.alasdiablo.janoeo.world.proxy;
 
-import fr.alasdiablo.diolib.util.ColorsHelper;
+import fr.alasdiablo.diolib.client.ColorsHelper;
 import fr.alasdiablo.janoeo.world.init.WorldBlocks;
 
 public class ClientProxy extends CommonProxy {

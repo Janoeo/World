@@ -2,11 +2,10 @@ package fr.alasdiablo.janoeo.world.data;
 
 import static fr.alasdiablo.janoeo.world.Registries.*;
 
-import fr.alasdiablo.diolib.data.DioBlockModelProvider;
-import fr.alasdiablo.diolib.util.Utils;
+import fr.alasdiablo.diolib.data.provider.DioBlockModelProvider;
+import fr.alasdiablo.diolib.registries.RegistryHelper;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class WorldBlockModelProvider extends DioBlockModelProvider {
@@ -30,24 +29,24 @@ public class WorldBlockModelProvider extends DioBlockModelProvider {
         this.slab(CHERRY_SLAB, CHERRY_PLANKS);
         this.stairs(CHERRY_STAIRS, CHERRY_PLANKS);
         this.trapdoor(CHERRY_TRAPDOOR);
-        this.berryLeaves(OAK_LEAVES_APPLE, Utils.rl("minecraft", "block/oak_leaves"), Utils.rl(MOD_ID, "block/oak_leaves_apple"));
+        this.berryLeaves(OAK_LEAVES_APPLE, RegistryHelper.rl("minecraft", "block/oak_leaves"), RegistryHelper.rl(MOD_ID, "block/oak_leaves_apple"));
         this.pillar(STRIPPED_CHERRY_LOG);
         this.wood(STRIPPED_CHERRY_WOOD, STRIPPED_CHERRY_LOG);
     }
 
     private void berryLeaves(String blockNameIn, ResourceLocation textureAllIn, ResourceLocation textureBerry) {
-        withExistingParent(blockNameIn, Utils.rl(MOD_ID, "block/berry_leaves"))
+        withExistingParent(blockNameIn, RegistryHelper.rl(MOD_ID, "block/berry_leaves"))
                 .texture("all", textureAllIn)
                 .texture("berry", textureBerry);
     }
 
     private void wood(String blockNameIn, String textureNameIn) {
-        withExistingParent(blockNameIn, Utils.rl("minecraft", "block/cube_column"))
-                .texture("end", Utils.rl(this.modid, "block/" + textureNameIn + "_side"))
-                .texture("side", Utils.rl(this.modid, "block/" + textureNameIn + "_side"));
+        withExistingParent(blockNameIn, RegistryHelper.rl("minecraft", "block/cube_column"))
+                .texture("end", RegistryHelper.rl(this.modid, "block/" + textureNameIn + "_side"))
+                .texture("side", RegistryHelper.rl(this.modid, "block/" + textureNameIn + "_side"));
 
-        withExistingParent(blockNameIn + "_horizontal", Utils.rl("minecraft", "block/cube_column_horizontal"))
-                .texture("end", Utils.rl(this.modid, "block/" + textureNameIn + "_side"))
-                .texture("side", Utils.rl(this.modid, "block/" + textureNameIn + "_side"));
+        withExistingParent(blockNameIn + "_horizontal", RegistryHelper.rl("minecraft", "block/cube_column_horizontal"))
+                .texture("end", RegistryHelper.rl(this.modid, "block/" + textureNameIn + "_side"))
+                .texture("side", RegistryHelper.rl(this.modid, "block/" + textureNameIn + "_side"));
     }
 }

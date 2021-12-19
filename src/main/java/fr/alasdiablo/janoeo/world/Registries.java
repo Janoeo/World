@@ -1,13 +1,6 @@
 package fr.alasdiablo.janoeo.world;
 
-import net.minecraft.resources.ResourceLocation;
-
 public class Registries {
-
-    public static ResourceLocation rl(String name) {
-        return new ResourceLocation(MOD_ID, name);
-    }
-
     public static final String MOD_ID = "janoeo_world";
 
     public static final String OAK_LEAVES_APPLE = "oak_leaves_apple";
@@ -18,6 +11,8 @@ public class Registries {
     public static final String CHERRY_DOOR = "cherry_door";
     public static final String CHERRY_SAPLING = "cherry_sapling";
     public static final String CHERRY = "cherry";
+    public static final String CHERRY_TREE = "cherry_tree";
+    public static final String FANCY_CHERRY_TREE = "fancy_cherry_tree";
     public static final String STRIPPED_CHERRY_LOG = "stripped_cherry_log";
     public static final String STRIPPED_CHERRY_WOOD = "stripped_cherry_wood";
     public static final String CHERRY_BUTTON = "cherry_button";
@@ -29,4 +24,5 @@ public class Registries {
     public static final String CHERRY_TRAPDOOR = "cherry_trapdoor";
     public static final String OASIS = "oasis";
     public static final String TEMPERATE_RUIN = "temperate_ruin";
+    public static final String TREES_CHERRY   = "trees_cherry";
 }

@@ -1,15 +1,15 @@
 package fr.alasdiablo.janoeo.world;
 
-import fr.alasdiablo.diolib.gui.GroundItemGroup;
-import fr.alasdiablo.diolib.util.BlockHelper;
+import fr.alasdiablo.diolib.block.helper.BlockHelper;
+import fr.alasdiablo.diolib.item.GroundCreativeModeTab;
 import fr.alasdiablo.janoeo.world.data.*;
 import fr.alasdiablo.janoeo.world.init.WorldBlocks;
+import fr.alasdiablo.janoeo.world.init.WorldGenerations;
 import fr.alasdiablo.janoeo.world.init.WorldItems;
-import fr.alasdiablo.janoeo.world.world.gen.WorldStructureFeature;
-import fr.alasdiablo.janoeo.world.util.ClientProxy;
-import fr.alasdiablo.janoeo.world.util.CommonProxy;
+import fr.alasdiablo.janoeo.world.worldgen.features.WorldStructureFeatures;
+import fr.alasdiablo.janoeo.world.proxy.ClientProxy;
+import fr.alasdiablo.janoeo.world.proxy.CommonProxy;
 import fr.alasdiablo.janoeo.world.world.WorldGen;
-import fr.alasdiablo.janoeo.world.world.gen.WorldFeatures;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.CreativeModeTab;
@@ -38,7 +38,7 @@ public class World {
 
     public static final CommonProxy PROXY = DistExecutor.safeRunForDist(() -> ClientProxy::new, () -> CommonProxy::new);
 
-    public static final CreativeModeTab GROUP = new GroundItemGroup("janoeo.world.group") {
+    public static final CreativeModeTab GROUP = new GroundCreativeModeTab("janoeo.world.group") {
         @Override
         public ItemStack makeIcon() {
             return new ItemStack(WorldBlocks.OAK_LEAVES_APPLE);
@@ -47,18 +47,17 @@ public class World {
 
     public World() {
         IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
-        modBus.addListener(this::setup);
-        modBus.addListener(this::complete);
-        modBus.addListener(this::initFeatures);
-        modBus.addListener(this::gatherData);
+        modBus.addListener(this::onSetup);
+        modBus.addListener(this::onComplete);
+        modBus.addListener(this::onRegistry);
+        modBus.addListener(this::onGatherData);
         modBus.addGenericListener(Block.class, WorldBlocks::initBlock);
         modBus.addGenericListener(Item.class, WorldBlocks::initItem);
         modBus.addGenericListener(Item.class, WorldItems::init);
-        modBus.addGenericListener(StructureFeature.class, WorldStructureFeature::init);
-        MinecraftForge.EVENT_BUS.addListener(WorldGen::initStructure);
+        modBus.addGenericListener(StructureFeature.class, WorldStructureFeatures::init);
     }
 
-    private void gatherData(GatherDataEvent event) {
+    private void onGatherData(GatherDataEvent event) {
         World.logger.debug("Start data generator");
         final DataGenerator generator = event.getGenerator();
         final ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
@@ -81,17 +80,16 @@ public class World {
         generator.addProvider(new WorldLootTableProvider(generator));
     }
 
-    private void setup(final FMLCommonSetupEvent event) {
+    private void onSetup(final FMLCommonSetupEvent event) {
         this.initFlammable();
         this.initStrippables();
-        WorldGen.initOther();
     }
 
-    private void initFeatures(RegistryEvent.NewRegistry e) {
-        WorldFeatures.init();
+    private void onRegistry(RegistryEvent.NewRegistry e) {
+        MinecraftForge.EVENT_BUS.addListener(WorldGenerations::onBiomeLoading);
     }
 
-    private void complete(final FMLLoadCompleteEvent event) {
+    private void onComplete(final FMLLoadCompleteEvent event) {
         PROXY.init();
     }
 

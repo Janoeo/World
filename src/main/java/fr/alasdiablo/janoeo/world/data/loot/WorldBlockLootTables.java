@@ -1,6 +1,6 @@
 package fr.alasdiablo.janoeo.world.data.loot;
 
-import fr.alasdiablo.diolib.data.DioBlockLootTables;
+import fr.alasdiablo.diolib.data.loot.BlockLootTable;
 import fr.alasdiablo.janoeo.world.init.WorldBlocks;
 import fr.alasdiablo.janoeo.world.init.WorldItems;
 import net.minecraft.advancements.critereon.EnchantmentPredicate;
@@ -18,7 +18,7 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.MatchTool;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 
-public class WorldBlockLootTables extends DioBlockLootTables {
+public class WorldBlockLootTables extends BlockLootTable {
     private static final float[] NORMAL_LEAVES_SAPLING_CHANCES = new float[]{0.05F, 0.0625F, 0.083333336F, 0.1F};
     private static final LootItemCondition.Builder HAS_SILK_TOUCH = MatchTool.toolMatches(ItemPredicate.Builder.item().hasEnchantment(new EnchantmentPredicate(Enchantments.SILK_TOUCH, MinMaxBounds.Ints.atLeast(1))));
     private static final LootItemCondition.Builder HAS_SHEARS = MatchTool.toolMatches(ItemPredicate.Builder.item().of(Items.SHEARS));

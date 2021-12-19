@@ -1,5 +1,6 @@
 package fr.alasdiablo.janoeo.world.data;
 
+import fr.alasdiablo.diolib.registries.RegistryHelper;
 import fr.alasdiablo.janoeo.world.Registries;
 import fr.alasdiablo.janoeo.world.init.WorldBlocks;
 import net.minecraft.data.*;
@@ -22,12 +23,12 @@ public class WorldRecipeProvider extends RecipeProvider {
         ShapelessRecipeBuilder.shapeless(WorldBlocks.CHERRY_PLANKS, 4)
                 .requires(WorldBlocks.CHERRY_LOG)
                 .unlockedBy("has_cherry_log_block", has(WorldBlocks.CHERRY_LOG))
-                .save(consumer, Registries.rl("cherry_planks_from_cherry_log"));
+                .save(consumer, RegistryHelper.rl(Registries.MOD_ID, "cherry_planks_from_cherry_log"));
 
         ShapelessRecipeBuilder.shapeless(WorldBlocks.CHERRY_PLANKS, 4)
                 .requires(WorldBlocks.STRIPPED_CHERRY_LOG)
                 .unlockedBy("has_cherry_log_block", has(WorldBlocks.STRIPPED_CHERRY_LOG))
-                .save(consumer, Registries.rl("cherry_planks_from_stripped_cherry_log"));
+                .save(consumer, RegistryHelper.rl(Registries.MOD_ID, "cherry_planks_from_stripped_cherry_log"));
 
         ShapelessRecipeBuilder.shapeless(WorldBlocks.CHERRY_BUTTON)
                 .requires(WorldBlocks.CHERRY_PLANKS)

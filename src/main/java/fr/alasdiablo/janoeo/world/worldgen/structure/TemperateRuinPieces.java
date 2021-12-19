@@ -1,13 +1,13 @@
-package fr.alasdiablo.janoeo.world.world.structure;
+package fr.alasdiablo.janoeo.world.worldgen.structure;
 
 import com.google.common.collect.ImmutableMap;
+import fr.alasdiablo.diolib.registries.RegistryHelper;
 import fr.alasdiablo.janoeo.world.Registries;
-import fr.alasdiablo.janoeo.world.world.gen.WorldStructurePieceType;
+import fr.alasdiablo.janoeo.world.worldgen.features.WorldStructurePieceType;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.StructureFeatureManager;
@@ -18,6 +18,7 @@ import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.levelgen.structure.StructurePieceAccessor;
 import net.minecraft.world.level.levelgen.structure.TemplateStructurePiece;
+import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockIgnoreProcessor;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureManager;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
@@ -30,8 +31,8 @@ import java.util.Random;
 @ParametersAreNonnullByDefault
 public class TemperateRuinPieces {
 
-    private static final ResourceLocation STRUCTURE_LOCATION_RUIN_1 = Registries.rl("temperate/ruin/small_1");
-    private static final ResourceLocation STRUCTURE_LOCATION_RUIN_2 = Registries.rl("temperate/ruin/small_2");
+    private static final ResourceLocation STRUCTURE_LOCATION_RUIN_1 = RegistryHelper.rl(Registries.MOD_ID, "temperate/ruin/small_1");
+    private static final ResourceLocation STRUCTURE_LOCATION_RUIN_2 = RegistryHelper.rl(Registries.MOD_ID, "temperate/ruin/small_2");
 
     private static final Map<ResourceLocation, BlockPos> PIVOTS = ImmutableMap.of(
             STRUCTURE_LOCATION_RUIN_1, new BlockPos(3, 0, 3),
@@ -53,26 +54,15 @@ public class TemperateRuinPieces {
     public static class TemperateRuinPiece extends TemplateStructurePiece {
 
         public TemperateRuinPiece(StructureManager structureManager, ResourceLocation resourceLocation, BlockPos pos, Rotation rotation, int p_71248_) {
-            super(
-                    WorldStructurePieceType.TEMPERATE_RUIN_STRUCTURE_PIECE,
-                    0,
-                    structureManager,
-                    resourceLocation,
-                    resourceLocation.toString(),
-                    makeSettings(rotation, resourceLocation),
-                    makePosition(resourceLocation, pos, p_71248_)
+            super(WorldStructurePieceType.TEMPERATE_RUIN_STRUCTURE_PIECE, 0, structureManager, resourceLocation, resourceLocation.toString(),
+                  makeSettings(rotation, resourceLocation), makePosition(resourceLocation, pos, p_71248_)
             );
         }
 
-        public TemperateRuinPiece(ServerLevel level, CompoundTag compoundTag) {
-            super(
-                    WorldStructurePieceType.TEMPERATE_RUIN_STRUCTURE_PIECE,
-                    compoundTag,
-                    level,
-                    (resourceLocation) -> makeSettings(
-                            Rotation.valueOf(compoundTag.getString("Rot")), resourceLocation
-                    )
-            );
+        public TemperateRuinPiece(StructureManager structureManager, CompoundTag compoundTag) {
+            super(WorldStructurePieceType.TEMPERATE_RUIN_STRUCTURE_PIECE, compoundTag, structureManager, (resourceLocation) -> makeSettings(
+                    Rotation.valueOf(compoundTag.getString("Rot")), resourceLocation
+            ));
         }
 
         private static StructurePlaceSettings makeSettings(Rotation rotation, ResourceLocation resourceLocation) {
@@ -90,19 +80,18 @@ public class TemperateRuinPieces {
         }
 
         @Override
-        protected void addAdditionalSaveData(ServerLevel serverLevel, CompoundTag compoundTag) {
-            super.addAdditionalSaveData(serverLevel, compoundTag);
+        protected void addAdditionalSaveData(StructurePieceSerializationContext serializationContext, CompoundTag compoundTag) {
+            super.addAdditionalSaveData(serializationContext, compoundTag);
             compoundTag.putString("Rot", this.placeSettings.getRotation().name());
         }
 
         @Override
-        public boolean postProcess(WorldGenLevel worldIn, StructureFeatureManager structureFeatureManager, ChunkGenerator chunkGenerator, Random random, BoundingBox boundingBox, ChunkPos chunkPos, BlockPos blockPos) {
-            boundingBox.encapsulate(this.template.getBoundingBox(this.placeSettings, this.templatePosition));
+        public void postProcess(WorldGenLevel worldIn, StructureFeatureManager structureFeatureManager, ChunkGenerator chunkGenerator, Random random, BoundingBox boundingBox, ChunkPos chunkPos, BlockPos blockPos) {
+            // boundingBox.encapsulate(this.template.getBoundingBox(this.placeSettings, this.templatePosition));
             BlockPos prevTemplatePosition = this.templatePosition;
             this.templatePosition = this.templatePosition.offset(0, -1, 0);
-            boolean flag = super.postProcess(worldIn, structureFeatureManager, chunkGenerator, random, boundingBox, chunkPos, blockPos);
+            super.postProcess(worldIn, structureFeatureManager, chunkGenerator, random, boundingBox, chunkPos, blockPos);
             this.templatePosition = prevTemplatePosition;
-            return flag;
         }
 
         @Override

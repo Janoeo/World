@@ -1,12 +1,10 @@
 package fr.alasdiablo.janoeo.world.init;
 
-import fr.alasdiablo.diolib.util.RegistryHelper;
+import fr.alasdiablo.diolib.registries.RegistryHelper;
 import fr.alasdiablo.janoeo.world.World;
 import fr.alasdiablo.janoeo.world.Registries;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.IForgeRegistry;
 
 public class WorldItems {

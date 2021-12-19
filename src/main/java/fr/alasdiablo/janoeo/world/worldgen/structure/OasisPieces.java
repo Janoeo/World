@@ -1,14 +1,13 @@
-package fr.alasdiablo.janoeo.world.world.structure;
+package fr.alasdiablo.janoeo.world.worldgen.structure;
 
 import com.google.common.collect.ImmutableMap;
+import fr.alasdiablo.diolib.registries.RegistryHelper;
 import fr.alasdiablo.janoeo.world.Registries;
-import fr.alasdiablo.janoeo.world.world.gen.WorldStructureFeatures;
-import fr.alasdiablo.janoeo.world.world.gen.WorldStructurePieceType;
+import fr.alasdiablo.janoeo.world.worldgen.features.WorldStructurePieceType;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.StructureFeatureManager;
@@ -19,6 +18,7 @@ import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.levelgen.structure.StructurePieceAccessor;
 import net.minecraft.world.level.levelgen.structure.TemplateStructurePiece;
+import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockIgnoreProcessor;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureManager;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
@@ -30,7 +30,7 @@ import java.util.Random;
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 public class OasisPieces {
-    private static final ResourceLocation STRUCTURE_LOCATION_OASIS = Registries.rl("desert/oasis");
+    private static final ResourceLocation STRUCTURE_LOCATION_OASIS = RegistryHelper.rl(Registries.MOD_ID, "desert/oasis");
 
     private static final Map<ResourceLocation, BlockPos> PIVOTS = ImmutableMap.of(STRUCTURE_LOCATION_OASIS, new BlockPos(7, 4, 7));
     private static final Map<ResourceLocation, BlockPos> OFFSETS = ImmutableMap.of(STRUCTURE_LOCATION_OASIS, new BlockPos(0, -4 , 0));
@@ -42,26 +42,15 @@ public class OasisPieces {
     public static class OasisPiece extends TemplateStructurePiece {
 
         public OasisPiece(StructureManager structureManager, ResourceLocation resourceLocation, BlockPos pos, Rotation rotation, int p_71248_) {
-            super(
-                    WorldStructurePieceType.OASIS_STRUCTURE_PIECE,
-                    0,
-                    structureManager,
-                    resourceLocation,
-                    resourceLocation.toString(),
-                    makeSettings(rotation, resourceLocation),
-                    makePosition(resourceLocation, pos, p_71248_)
+            super(WorldStructurePieceType.OASIS_STRUCTURE_PIECE, 0, structureManager, resourceLocation, resourceLocation.toString(),
+                  makeSettings(rotation, resourceLocation), makePosition(resourceLocation, pos, p_71248_)
             );
         }
 
-        public OasisPiece(ServerLevel level, CompoundTag compoundTag) {
-            super(
-                    WorldStructurePieceType.OASIS_STRUCTURE_PIECE,
-                    compoundTag,
-                    level,
-                    (resourceLocation) -> makeSettings(
-                            Rotation.valueOf(compoundTag.getString("Rot")), resourceLocation
-                    )
-            );
+        public OasisPiece(StructureManager structureManager, CompoundTag compoundTag) {
+            super(WorldStructurePieceType.OASIS_STRUCTURE_PIECE, compoundTag, structureManager, (resourceLocation) -> makeSettings(
+                    Rotation.valueOf(compoundTag.getString("Rot")), resourceLocation
+            ));
         }
 
         private static StructurePlaceSettings makeSettings(Rotation rotation, ResourceLocation resourceLocation) {
@@ -79,19 +68,18 @@ public class OasisPieces {
         }
 
         @Override
-        protected void addAdditionalSaveData(ServerLevel serverLevel, CompoundTag compoundTag) {
-            super.addAdditionalSaveData(serverLevel, compoundTag);
+        protected void addAdditionalSaveData(StructurePieceSerializationContext serializationContext, CompoundTag compoundTag) {
+            super.addAdditionalSaveData(serializationContext, compoundTag);
             compoundTag.putString("Rot", this.placeSettings.getRotation().name());
         }
 
         @Override
-        public boolean postProcess(WorldGenLevel worldIn, StructureFeatureManager structureFeatureManager, ChunkGenerator chunkGenerator, Random random, BoundingBox boundingBox, ChunkPos chunkPos, BlockPos blockPos) {
-            boundingBox.encapsulate(this.template.getBoundingBox(this.placeSettings, this.templatePosition));
+        public void postProcess(WorldGenLevel worldIn, StructureFeatureManager structureFeatureManager, ChunkGenerator chunkGenerator, Random random, BoundingBox boundingBox, ChunkPos chunkPos, BlockPos blockPos) {
+            // boundingBox.encapsulate(this.template.getBoundingBox(this.placeSettings, this.templatePosition));
             BlockPos prevTemplatePosition = this.templatePosition;
             this.templatePosition = this.templatePosition.offset(0, -4, 0);
-            boolean flag = super.postProcess(worldIn, structureFeatureManager, chunkGenerator, random, boundingBox, chunkPos, blockPos);
+            super.postProcess(worldIn, structureFeatureManager, chunkGenerator, random, boundingBox, chunkPos, blockPos);
             this.templatePosition = prevTemplatePosition;
-            return flag;
         }
 
         @Override

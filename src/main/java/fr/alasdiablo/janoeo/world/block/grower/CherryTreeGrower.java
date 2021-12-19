@@ -1,6 +1,6 @@
 package fr.alasdiablo.janoeo.world.block.grower;
 
-import fr.alasdiablo.janoeo.world.world.gen.WorldFeatures;
+import fr.alasdiablo.janoeo.world.worldgen.features.WorldTreeFeatures;
 import net.minecraft.world.level.block.grower.AbstractTreeGrower;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
@@ -12,9 +12,9 @@ public class CherryTreeGrower extends AbstractTreeGrower {
     @Override
     protected ConfiguredFeature<TreeConfiguration, ?> getConfiguredFeature(Random randomIn, boolean largeHive) {
         if (randomIn.nextInt(10) == 0) {
-            return WorldFeatures.FANCY_CHERRY_TREE;
+            return WorldTreeFeatures.FANCY_CHERRY;
         } else {
-            return WorldFeatures.CHERRY_TREE;
+            return WorldTreeFeatures.CHERRY;
         }
     }
 }

@@ -2,7 +2,7 @@ package fr.alasdiablo.janoeo.world.data;
 
 import static fr.alasdiablo.janoeo.world.Registries.*;
 
-import fr.alasdiablo.diolib.data.DioBlockStateProvider;
+import fr.alasdiablo.diolib.data.provider.DioBlockStateProvider;
 import net.minecraft.data.DataGenerator;
 
 public class WorldBlockStateProvider extends DioBlockStateProvider {

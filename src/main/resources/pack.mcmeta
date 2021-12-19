@@ -1,7 +1,6 @@
 {
     "pack": {
-        "description": "Just Another Nether/Overworld/End Ores - World Resource Pack",
-        "pack_format": 5,
-        "_comment": "Janeoe Project Resource Pack."
+        "description": "Janoeo resources",
+        "pack_format": 8
     }
 }

@@ -1,6 +1,6 @@
 package fr.alasdiablo.janoeo.world.init;
 
-import fr.alasdiablo.diolib.util.RegistryHelper;
+import fr.alasdiablo.diolib.registries.RegistryHelper;
 import fr.alasdiablo.janoeo.world.World;
 import fr.alasdiablo.janoeo.world.block.grower.CherryTreeGrower;
 import fr.alasdiablo.janoeo.world.Registries;
@@ -43,12 +43,12 @@ public class WorldBlocks {
         final IForgeRegistry<Block> registry = event.getRegistry();
 
         RegistryHelper.registerBlock(event.getRegistry(),
-                OAK_LEAVES_APPLE, CHERRY_LEAVES, CHERRY_SAPLING,
-                CHERRY_LOG, STRIPPED_CHERRY_LOG, CHERRY_WOOD,
-                STRIPPED_CHERRY_WOOD, CHERRY_PLANKS, CHERRY_DOOR,
-                CHERRY_BUTTON, CHERRY_PRESSURE_PLATE, CHERRY_FENCE,
-                CHERRY_FENCE_GATE, CHERRY_SLAB, CHERRY_STAIRS,
-                CHERRY_TRAPDOOR
+                                     OAK_LEAVES_APPLE, CHERRY_LEAVES, CHERRY_SAPLING,
+                                     CHERRY_LOG, STRIPPED_CHERRY_LOG, CHERRY_WOOD,
+                                     STRIPPED_CHERRY_WOOD, CHERRY_PLANKS, CHERRY_DOOR,
+                                     CHERRY_BUTTON, CHERRY_PRESSURE_PLATE, CHERRY_FENCE,
+                                     CHERRY_FENCE_GATE, CHERRY_SLAB, CHERRY_STAIRS,
+                                     CHERRY_TRAPDOOR
         );
 
         if (FMLEnvironment.dist == Dist.CLIENT) {

@@ -1,16 +1,16 @@
-modLoader="javafml"
-loaderVersion="[37,)"
-license="LGPL-3.0"
-issueTrackerURL = "https://github.com/Janoeo/World/issues"
 
+modLoader="javafml"
+loaderVersion="[39,)"
+license="LGPL-3.0 License"
+issueTrackerURL = "https://github.com/Janoeo/World/issues"
 [[mods]]
 modId="janoeo_world"
 version="${file.jarVersion}"
 displayName="Janoeo World"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/janoeo-world"
 logoFile="janoeo_world.png"
 itemIcon="janoeo_world:cherry_sapling"
-displayURL="https://www.curseforge.com/minecraft/mc-mods/janoeo-world"
-authors="AlasDiablo, lIotaMiu, Safyrus"
+authors="AlasDiablo, Safyrus"
 credits="Structure builder: Raegann"
 description='''
 A mod who add structure and more!
@@ -18,18 +18,18 @@ A mod who add structure and more!
 [[dependencies.janoeo_world]]
     modId="forge"
     mandatory=true
-    versionRange="[37,)"
+    versionRange="[39,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.janoeo_world]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.17.1,1.18)"
+    versionRange="[1.18.1,1.19)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.janoeo_world]]
     modId="diolib"
     mandatory=true
-    versionRange="[2.0.17,)"
+    versionRange="[3.0.20,)"
     ordering="AFTER"
     side="BOTH"
