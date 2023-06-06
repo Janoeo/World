@@ -1,51 +1,45 @@
 buildscript {
     repositories {
         maven { url = 'https://maven.minecraftforge.net' }
+        maven { url = 'https://repo.spongepowered.org/maven' }
+        maven { url = 'https://maven.parchmentmc.org' }
         mavenCentral()
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
+        classpath 'org.parchmentmc:librarian:1.+'
+        classpath 'org.spongepowered:mixingradle:0.7.32'
     }
 }
+
 apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'org.parchmentmc.librarian.forgegradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
+apply plugin: 'org.spongepowered.mixin'
 
-// ***************************************** //
-//                                           //
-//        Standard versioning system         //
-//                                           //
-// ***************************************** //
-def majorVersion = 2
-def minorVersion = 0
-def buildVersion = 78
-def isExperimental = true
-version = "${majorVersion}.${minorVersion}.${buildVersion}"
-if (isExperimental) {
-    version += '-experimental'
-}
-
-// ***************************************** //
-//                                           //
-//         Janoeo versioning system          //
-//                                           //
-// ***************************************** //
-def isJanoeo = true
-def janoeoProjectVersion = 6
-if (isJanoeo) {
-    version = "${janoeoProjectVersion}.${version}"
+if (project.findProperty('ci_build').toBoolean()) {
+    version = "ci.${project.findProperty('ci_build_number')}"
+} else {
+    version =  "${project.findProperty('projectVersion')}"
+    version +=".${project.findProperty('majorVersion')}"
+    version +=".${project.findProperty('minorVersion')}"
+    version +=".${project.findProperty('buildVersion')}"
+    if (project.findProperty('isExperimental').toBoolean()) {
+        version += '-experimental'
+    }
 }
 
 group = 'fr.alasdiablo.janoeo.world'
 archivesBaseName = 'Janoeo World'
 
 def manifestAttributes = [
-        "Specification-Title"     : "Janoeo Template",
-        "Specification-Vendor"    : "AlasDiablo, Safyrus",
-        "Specification-Version"   : "1",
+        "Specification-Title"     : project.name,
+        "Specification-Vendor"    : "AlasDiablo, Safyrus, Raegann",
+        "Specification-Version"   : project.findProperty('majorVersion').toString(),
         "Implementation-Title"    : project.name,
         "Implementation-Version"  : project.jar.archiveVersion,
-        "Implementation-Vendor"   : "AlasDiablo, Safyrus",
+        "Implementation-Vendor"   : "AlasDiablo, Safyrus, Raegann",
         "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
 ]
 
@@ -56,14 +50,15 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 def deobfSourceClassifier
 
 minecraft {
-    mappings channel: 'official', version: '1.18.1'
+    mappings channel: 'parchment', version: '1.19.3-2023.03.12-1.19.4'
     deobfSourceClassifier = getMappings().get()
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
     runs {
         client {
             workingDirectory project.file('run')
-            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
+            property 'forge.enabledGameTestNamespaces', 'janoeo_world'
             mods {
                 janoeo_world {
                     source sourceSets.main
@@ -73,8 +68,22 @@ minecraft {
 
         server {
             workingDirectory project.file('run')
-            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
+            property 'forge.enabledGameTestNamespaces', 'janoeo_world'
+            mods {
+                janoeo_world {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        gameTestServer {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            property 'forge.enabledGameTestNamespaces', 'janoeo_world'
+
             mods {
                 janoeo_world {
                     source sourceSets.main
@@ -84,7 +93,7 @@ minecraft {
 
         data {
             workingDirectory project.file('run')
-            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
             args '--mod', 'janoeo_world', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
             mods {
@@ -99,13 +108,20 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
-    maven { url = 'https://www.cursemaven.com/' }
+    maven {
+        url 'https://cursemaven.com'
+        content {
+            includeGroup 'curse.maven'
+        }
+    }
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.18.1-39.0.5'
-    implementation 'curse.maven:diabololib-422014:3571204'          // DiaboloLib
-    implementation fg.deobf('curse.maven:catalogue-459701:3559402') // Catalogue
+    minecraft 'net.minecraftforge:forge:1.19.4-45.0.57'
+    implementation fileTree(dir:'lib', include:'*.jar')
+    implementation fg.deobf('curse.maven:world-stripper-250603:4504167')    // World Stripper (3.3.0)
+    // implementation fg.deobf('curse.maven:catalogue-459701:3822882') // Catalogue (1.6.1)
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 
 jar {
@@ -134,4 +150,21 @@ artifacts {
     archives jar
     archives sourcesJar
     archives deobfJar
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifact jar
+        }
+    }
+    repositories {
+        maven {
+            url "file://${project.projectDir}/mcmodsrepo"
+        }
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
 }
